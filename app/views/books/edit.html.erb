@@ -1,18 +1,37 @@
 <h1>Editing Book</h1>
 
-<%= form_with model: @book do |f| %>
- <div class="field">
-  <p class="a">Title</p>
-  <%= f.text_field :title %>
- </div>
- <div class="field">
-  <p class="a">Body</p>
-  <%= f.text_area :body %>
- </div>
- <div class="action">
-  <%= f.submit 'Update Book' %>
+<% if @book.errors.any? %>
+ <div id="error_explanation">
+  <h2>2 errors prohibited this book from being saved:</h2>
+   <ul>
+    <li>Title can't be blank</li>
+    <li>Body can't be blank</li>
+   </ul>
  </div>
 <% end %>
 
-<a class="edit_88268" href="/books/88268/show">Show</a> |
-<a class="back" href="/books">Back</a>
+<%= form_with model: @book do |f| %>
+ <div class="field">
+  <div class="field-with-errors">
+  <label for="book_title">Title</label>
+  </div>
+  <div class="field-with-errors">
+  <%= f.text_field :title %>
+  </div>
+ </div>
+ <div class="field">
+  <div class="field-with-errors">
+  <label for="book_body">Body</label>
+  </div>
+  <div class="field-with-errors">
+  <%= f.text_area :body %>
+  </div>
+ </div>
+ <div class="action">
+    <%= f.submit 'Update Book' %>
+ </div>
+<% end %>
+
+<%= link_to "Show", book_path(@book) %>
+<%= link_to "back", books_path %>
+

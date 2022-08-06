@@ -1,17 +1,17 @@
 <body>
-    <p id="notice">Book was successfully created.</p>
-
+  <div class="succes-flash">
+　<%= flash[:notice] %>
+　</div>
 <p>
   <strong>Title:</strong>
-  a
+  <%=@book.title %>
 </p>
 
 <p>
   <strong>Body:</strong>
-  a
+  <%=@book.body %>
 </p>
 
-<a class="edit_88268" href="/books/88268/edit">Edit</a> |
-<a class="back" href="/books">Back</a>
-
+<%= link_to "edit", edit_book_path(@book.id) %>
+<%= link_to "back", books_path %>
 </body>
